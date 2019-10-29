@@ -20,17 +20,17 @@ public class Ex07Controller {
 		return "ex-07";
 	}
 
-	// 演習7
+//	// 演習7
 //	@RequestMapping("/calc")
-//	public String calc(String num1, String num2) {
-//		System.out.println(Integer.parseInt(num1) * Integer.parseInt(num2));
+//	public String calc(Integer num1, Integer num2) {
+//		System.out.println(num1 * num2);
 //		return "finished";
 //	}
 	
 	// 演習8
 	@RequestMapping("/calc")
 	public String calc(Ex07ReceiveForm recieveForm) {
-		System.out.println(recieveForm.getIntNum1() * recieveForm.getIntNum2());
+		System.out.println(recieveForm.getNum1() * recieveForm.getNum2());
 		return "finished";
 	}
 }

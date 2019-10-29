@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/ex04")
 public class Ex04Controller {
-	private final static String SUCCESS_EMAIL="abc@gmail.com";
-	private final static String SUCCESS_PASSWORD="abc";
 	
 	@RequestMapping("")
 	public String index() {
@@ -16,7 +14,7 @@ public class Ex04Controller {
 	
 	@RequestMapping("/login")
 	public String login(String email,String pass) {
-		if(SUCCESS_EMAIL.equals(email) & SUCCESS_PASSWORD.equals(pass) ) {
+		if("abc@gmail.com".equals(email) & "abc".equals(pass) ) {
 			return "ex-04-success";
 		}else {
 			return "ex-04-failure";
