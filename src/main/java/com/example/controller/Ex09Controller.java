@@ -10,8 +10,6 @@ import com.example.form.Ex09ReceiveForm;
 @Controller
 @RequestMapping("/ex09")
 public class Ex09Controller {
-	private final static String SUCCESS_EMAIL = "abc@gmail.com";
-	private final static String SUCCESS_PASSWORD = "abc";
 
 	@ModelAttribute
 	public Ex09ReceiveForm setUpForm() {
@@ -25,7 +23,7 @@ public class Ex09Controller {
 
 	@RequestMapping("/receive-info")
 	public String receiveInfo(Ex09ReceiveForm receiveForm, Model model) {
-		if (SUCCESS_EMAIL.equals(receiveForm.getEmail()) & SUCCESS_PASSWORD.equals(receiveForm.getPass())) {
+		if ("abc@gmail.com".equals(receiveForm.getEmail()) && "abc".equals(receiveForm.getPass())) {
 			model.addAttribute("result", "成功");
 		} else {
 			model.addAttribute("result", "失敗");
