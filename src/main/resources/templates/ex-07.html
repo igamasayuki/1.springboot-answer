@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="finished.html" th:action="@{ex07/calc}" method="post" th:object="${ex07ReceiveForm}">
+	2つの数を入力してください
+		<input type="text" name="num1" th:field="*{num1}">×<input type="text" name="num2" th:field="*{num2}">
+		<button>計算</button>
+	</form>
+</body>
+</html>
