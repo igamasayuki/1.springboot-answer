@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>アンケート結果画面</title>
+<link rel="stylesheet" type="text/css" href="../../static/css/style.css"
+	th:href="@{/css/style.css}" />
+</head>
+<body>
+	<h3>入力確認画面</h3>
+	名前：
+	<span th:text="${questionnaire.name}">山田太郎</span>
+	<br>
+	<br> メール：
+	<span th:text="${questionnaire.mailAddress}">yamada@test.com</span>
+	<br>
+	<br> 性別：
+	<span th:text="${questionnaire.gender}">男</span>
+	<br>
+	<br> 趣味：
+	<br>
+	<div th:each="hobby : ${questionnaire.hobbyList}">
+		<span th:text="${hobby}">野球</span> <br>
+	</div>
+	<br> 好きな言語：
+	<span th:text="${questionnaire.language}">Java</span>
+	<br>
+	<br> その他：
+	<pre>
+		<span th:text="${questionnaire.other}">その他の内容</span>
+	</pre>
+	<br>
+</body>
+</html>
