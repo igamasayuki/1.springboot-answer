@@ -12,39 +12,37 @@
 		method="post">
 		<div th:errors="*{name}" class="error-messages">エラー！</div>
 		名前： <br> <input type="text" name="name" th:field="*{name}"
-			th:errorclass="error-input" value="山田太郎"> <br>
+			th:errorclass="error-input"> <br>
 		<div th:errors="*{mailAddress}" class="error-messages">エラー！</div>
 		メール： <br> <input type="text" name="mailAddress"
-			th:field="*{mailAddress}" th:errorclass="error-input"
-			value="yamada@test.com"> <br>
+			th:field="*{mailAddress}" th:errorclass="error-input"> <br>
 		<!-- radio -->
 		<div th:errors="*{gender}" class="error-messages">エラー！</div>
 		性別： <br>
-		<div class="radio" th:each="item : ${genderMap}">
-			<input type="radio" name="gender" th:value="${item.key}"
-				th:text="${item.value}" th:field="*{gender}">
+		<div class="radio" th:each="gender:${genderMap}">
+			<input type="radio" name="gender" th:value="${gender.key}"
+				th:text="${gender.value}" th:field="*{gender}">
 		</div>
 		<br>
 		<div th:errors="*{hobbyList}" class="error-messages">エラー！</div>
 		趣味： <br>
-		<div class="checkbox" th:each="item : ${hobbyMap}">
-			<input type="checkbox" name="hobbyList" th:value="${item.key}"
-				th:text="${item.value}" th:field="*{hobbyList}">
+		<div class="checkbox" th:each="hobby:${hobbyMap}">
+			<input type="checkbox" name="hobbyList" th:value="${hobby.key}"
+				th:text="${hobby.value}" th:field="*{hobbyList}">
 		</div>
 		<br>
 		<div th:errors="*{language}" class="error-messages">エラー！</div>
 		好きな言語： <br>
 		<select id="exampleMSelect" name="language">
 			<option value="">---</option>
-			<option th:each="item : ${languageMap}" th:value="${item.key}"
-				th:text="${item.value}" th:field="*{language}">Java</option>
+			<option th:each="language:${languageMap}" th:value="${language.key}"
+				th:text="${language.value}" th:field="*{language}">Java</option>
 		</select>
 		<br>
 		<div th:errors="*{other}" class="error-messages">エラー！</div>
 		その他： <br>
 		<textarea name="other" th:field="*{other}" th:errorclass="error-input"
 			rows="5" cols="40">
-		その他の内容
 		</textarea>
 		<br> <br> <input type="submit" value="送信">
 	</form>
