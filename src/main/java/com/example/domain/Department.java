@@ -12,6 +12,10 @@ public class Department {
 	/** 部署名 */
     private String name;
     
+	@Override
+	public String toString() {
+		return "Department [id=" + id + ", name=" + name + "]";
+	}
 	public Integer getId() {
 		return id;
 	}

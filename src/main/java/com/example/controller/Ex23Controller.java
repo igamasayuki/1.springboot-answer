@@ -8,18 +8,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/jdbc")
-public class JdbcController {
+@RequestMapping("/ex23")
+public class Ex23Controller {
 
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 
 	@RequestMapping("/execute")
 	public String execute() {
-		String sql = "SELECT count(*) FROM employees" + "WHERE id = :firstId OR id = secondId";
-		SqlParameterSource param = new MapSqlParameterSource().addValue("firstId", 1).addValue("secondId", 3);
+		String sql = "SELECT count(*) FROM departments "
+				+ "WHERE name = :firstName OR name = :secondName";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("firstName", "総務部").addValue("secondName",
+				"技術部");
 		Integer result = template.queryForObject(sql, param, Integer.class);
-		System.out.println("result = " + result);
+		System.out.println("件数" + result);
 
 		return "finished";
 	}

@@ -1,9 +1,9 @@
-package com.example.di.logic;
+package com.example.logic;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class CalcLogic {
+public class Ex21CalcLogic {
 	
 	public int add(int num1,int num2) {
 		return num1+num2;

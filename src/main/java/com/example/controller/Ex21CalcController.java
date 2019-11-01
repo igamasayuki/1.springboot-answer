@@ -1,17 +1,17 @@
-package com.example.di.controller;
+package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.di.logic.CalcLogic;
+import com.example.logic.Ex21CalcLogic;
 
 @Controller
-@RequestMapping("/calc")
-public class CalcController {
+@RequestMapping("/ex22calc")
+public class Ex21CalcController {
 	
 	@Autowired
-	private CalcLogic calcLogic;
+	private Ex21CalcLogic calcLogic;
 	
 	@RequestMapping("/add")
 	public String add() {

@@ -1,18 +1,18 @@
-package com.example.di.controller;
+package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.di.logic.FactorialLogic;
+import com.example.logic.Ex22FactorialLogic;
 
 @Controller
-@RequestMapping("/factorial")
-public class FactorialController {
+@RequestMapping("/ex22factorial")
+public class Ex22FactorialController {
 	
 	@Autowired
-	private FactorialLogic logic;
+	private Ex22FactorialLogic logic;
 	
 	@RequestMapping("/view-result")
 	public String viewResult(Model model) {

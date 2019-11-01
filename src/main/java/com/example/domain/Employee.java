@@ -21,6 +21,12 @@ public class Employee {
     /** 部署名 (JOINする時に使用される:最後の演習で使用) */
     private String departmentName;
 
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", departmentId="
+				+ departmentId + ", departmentName=" + departmentName + "]";
+	}
+	
 	public Integer getId() {
 		return id;
 	}

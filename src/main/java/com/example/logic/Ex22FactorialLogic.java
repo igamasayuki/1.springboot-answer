@@ -1,9 +1,9 @@
-package com.example.di.logic;
+package com.example.logic;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class FactorialLogic {
+public class Ex22FactorialLogic {
 	
 	public int getFactorial(int num) {
 		if(num==0) { 
