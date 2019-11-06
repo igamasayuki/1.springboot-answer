@@ -16,11 +16,12 @@ public class JdbcController {
 
 	@RequestMapping("/execute")
 	public String execute() {
-		String sql = "SELECT count(*) FROM employees" + "WHERE id = :firstId OR id = secondId";
+		String sql = "SELECT count(*) FROM employees WHERE id = :firstId OR id = :secondId";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("firstId", 1).addValue("secondId", 3);
 		Integer result = template.queryForObject(sql, param, Integer.class);
 		System.out.println("result = " + result);
 
 		return "finished";
 	}
+	
 }
