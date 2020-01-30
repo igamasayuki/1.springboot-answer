@@ -48,7 +48,8 @@ public class Ex16Controller {
 		// 再度以下の行のようにapplicationスコープを上書きする必要無し
 		// application.setAttribute("userList", userList); 
 
-		return "ex-16";
+		// 投稿後、更新ボタンを押した際に再度投稿されてしまう現象をリダイレクトで防ぐ
+		return "redirect:/ex16";
 	}
 
 }
