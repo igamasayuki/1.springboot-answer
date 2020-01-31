@@ -20,15 +20,19 @@
 		<div th:errors="*{gender}" class="error-messages">エラー！</div>
 		性別： <br>
 		<div class="radio" th:each="gender:${genderMap}">
-			<input type="radio" name="gender" th:value="${gender.key}"
+			<label th:for="gender + ${gender.key}">
+			<input th:id="gender + ${gender.key}" type="radio" name="gender" th:value="${gender.key}"
 				th:text="${gender.value}" th:field="*{gender}">
+			</label>
 		</div>
 		<br>
 		<div th:errors="*{hobbyList}" class="error-messages">エラー！</div>
 		趣味： <br>
 		<div class="checkbox" th:each="hobby:${hobbyMap}">
-			<input type="checkbox" name="hobbyList" th:value="${hobby.key}"
+			<label th:for="hobby + ${hobby.key}">
+			<input th:id="hobby + ${hobby.key}" type="checkbox" name="hobbyList" th:value="${hobby.key}"
 				th:text="${hobby.value}" th:field="*{hobbyList}">
+			</label>
 		</div>
 		<br>
 		<div th:errors="*{language}" class="error-messages">エラー！</div>
