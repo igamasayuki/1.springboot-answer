@@ -5,18 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.logic.Ex22FactorialLogic;
+import com.example.service.Ex22FactorialService;
 
 @Controller
 @RequestMapping("/ex22factorial")
 public class Ex22FactorialController {
 	
 	@Autowired
-	private Ex22FactorialLogic logic;
+	private Ex22FactorialService service;
 	
 	@RequestMapping("/view-result")
 	public String viewResult(Model model) {
-		model.addAttribute("result", logic.getFactorial(5));
+		model.addAttribute("result", service.getFactorial(5));
 		return "result";
 	}
 

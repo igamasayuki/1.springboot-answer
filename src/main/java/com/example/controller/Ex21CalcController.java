@@ -4,20 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.logic.Ex21CalcLogic;
+import com.example.service.Ex21CalcService;
 
 @Controller
 @RequestMapping("/ex22calc")
 public class Ex21CalcController {
 	
 	@Autowired
-	private Ex21CalcLogic calcLogic;
+	private Ex21CalcService calcService;
 	
 	@RequestMapping("/add")
 	public String add() {
 		int num1=2;
 		int num2=3;
-		int resultOfAdd = calcLogic.add(num1, num2);
+		int resultOfAdd = calcService.add(num1, num2);
 		System.out.println(num1+"+"+num2+"="+resultOfAdd);
 		return "finished";
 	}
@@ -25,7 +25,7 @@ public class Ex21CalcController {
 	public String sub() {
 		int num1=2;
 		int num2=3;
-		int resultOfAdd = calcLogic.sub(num1, num2);
+		int resultOfAdd = calcService.sub(num1, num2);
 		System.out.println(num1+"-"+num2+"="+resultOfAdd);
 		return "finished";
 	}
@@ -34,7 +34,7 @@ public class Ex21CalcController {
 	public String multi() {
 		int num1=2;
 		int num2=3;
-		int resultOfAdd = calcLogic.multi(num1, num2);
+		int resultOfAdd = calcService.multi(num1, num2);
 		System.out.println(num1+"*"+num2+"="+resultOfAdd);
 		return "finished";
 	}
@@ -43,7 +43,7 @@ public class Ex21CalcController {
 	public String div() {
 		int num1=2;
 		int num2=3;
-		int resultOfAdd = calcLogic.div(num1, num2);
+		int resultOfAdd = calcService.div(num1, num2);
 		System.out.println(num1+"/"+num2+"="+resultOfAdd);
 		return "finished";
 	}
