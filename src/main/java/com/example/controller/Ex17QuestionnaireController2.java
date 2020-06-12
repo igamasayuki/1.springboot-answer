@@ -49,8 +49,11 @@ public class Ex17QuestionnaireController2 {
 	@RequestMapping("")
 	public String index(Model model) {
 		// 選択肢を含む各Enum から Mapを作成しリクエストスコープに格納
+		// 性別
 		model.addAttribute("genderMap", GenderEnum.getMap());
+		// 趣味
 		model.addAttribute("hobbyMap", HobbyEnum.getMap());
+		// 好きな言語
 		model.addAttribute("languageMap", LanguageEnum.getMap());
 
 		return "ex-17-input-enum";
@@ -73,15 +76,21 @@ public class Ex17QuestionnaireController2 {
 		}
 		Questionnaire questionnaire = new Questionnaire();
 		BeanUtils.copyProperties(form, questionnaire);
+		// 性別
 		// Enum数値を実際の値へ変換 (例) gender 1 ⇒男
 		questionnaire.setGender(GenderEnum.of(form.getGender()).getValue());
+		
+		// 趣味
 		List<String> hobbyList = new ArrayList<String>();
 		for (Integer hobbyKey : form.getHobbyList()) {
 			String strHobby = HobbyEnum.of(hobbyKey).getValue();
 			hobbyList.add(strHobby);
 		}
 		questionnaire.setHobbyList(hobbyList);
+		
+		// 好きな言語
 		questionnaire.setLanguage(LanguageEnum.of(form.getLanguage()).getValue());
+		
 		redirectAttributes.addFlashAttribute("questionnaire", questionnaire);
 		return "redirect:/ex17-enum/toresult";
 	}
