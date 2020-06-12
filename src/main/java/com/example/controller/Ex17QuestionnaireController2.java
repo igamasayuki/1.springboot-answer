@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.common.GenderEnum;
-import com.example.common.HobbyEnum;
-import com.example.common.LanguageEnum;
+import com.example.constant.GenderEnum;
+import com.example.constant.HobbyEnum;
+import com.example.constant.LanguageEnum;
 import com.example.domain.Questionnaire;
 import com.example.form.Ex17QuestionnaireForm;
 

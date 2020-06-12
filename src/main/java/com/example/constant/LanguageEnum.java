@@ -1,4 +1,4 @@
-package com.example.common;
+package com.example.constant;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

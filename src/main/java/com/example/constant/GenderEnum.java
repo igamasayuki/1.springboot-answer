@@ -1,17 +1,17 @@
-package com.example.common;
+package com.example.constant;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * 趣味を表す列挙型.
+ * 性別を表す列挙型.
  * 
  * @author igamasayuki
  *
  */
-public enum HobbyEnum {
+public enum GenderEnum {
 	// 定数一覧、DayOfWeekのコンストラクタを使用
-	TENNIS(1, "テニス"), BASE_BALL(2, "野球"), GOLF(3, "ゴルフ"),;
+	MAN(1, "男"), WOMAN(2, "女"),;
 
 	// 定数に含めるフィールド、コンストラクタ、メソッドを定義
 	/** key値 */
@@ -22,7 +22,7 @@ public enum HobbyEnum {
 	/**
 	 * コンストラクタ。
 	 */
-	private HobbyEnum(final Integer key, final String value) {
+	private GenderEnum(final Integer key, final String value) {
 		this.key = key;
 		this.value = value;
 	}
@@ -52,10 +52,10 @@ public enum HobbyEnum {
 	 *            key
 	 * @return 渡されたkeyを含むenum
 	 */
-	public static HobbyEnum of(Integer key) {
-		for (HobbyEnum hobbyEnum : HobbyEnum.values()) {
-			if (hobbyEnum.key == key) {
-				return hobbyEnum;
+	public static GenderEnum of(Integer key) {
+		for (GenderEnum genderEnum : GenderEnum.values()) {
+			if (genderEnum.key == key) {
+				return genderEnum;
 			}
 		}
 		throw new IndexOutOfBoundsException("The value of enum doesn't exist.");
@@ -68,8 +68,8 @@ public enum HobbyEnum {
 	 */
 	public static Map<Integer,String> getMap() {
 		Map<Integer,String> map = new LinkedHashMap<>();
-		for (HobbyEnum hobbyEnum : HobbyEnum.values()) {
-			map.put(hobbyEnum.key, hobbyEnum.value);
+		for (GenderEnum genderEnum : GenderEnum.values()) {
+			map.put(genderEnum.key, genderEnum.value);
 		}
 		return map;
 	}
