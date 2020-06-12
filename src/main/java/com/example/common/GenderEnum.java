@@ -1,5 +1,8 @@
 package com.example.common;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * 性別を表す列挙型.
  * 
@@ -12,14 +15,14 @@ public enum GenderEnum {
 
 	// 定数に含めるフィールド、コンストラクタ、メソッドを定義
 	/** key値 */
-	private final int key;
+	private final Integer key;
 	/** value値 */
 	private final String value;
 
 	/**
 	 * コンストラクタ。
 	 */
-	private GenderEnum(final int key, final String value) {
+	private GenderEnum(final Integer key, final String value) {
 		this.key = key;
 		this.value = value;
 	}
@@ -38,7 +41,7 @@ public enum GenderEnum {
 	 * 
 	 * @return key値
 	 */
-	public int getKey() {
+	public Integer getKey() {
 		return key;
 	}
 
@@ -49,13 +52,26 @@ public enum GenderEnum {
 	 *            key
 	 * @return 渡されたkeyを含むenum
 	 */
-	public static GenderEnum of(int key) {
+	public static GenderEnum of(Integer key) {
 		for (GenderEnum genderEnum : GenderEnum.values()) {
 			if (genderEnum.key == key) {
 				return genderEnum;
 			}
 		}
 		throw new IndexOutOfBoundsException("The value of enum doesn't exist.");
+	}
+	
+	/**
+	 * enumからMap<key,value>を作成し、返します.
+	 * 
+	 * @return Mapオブジェクト
+	 */
+	public static Map<Integer,String> getMap() {
+		Map<Integer,String> map = new LinkedHashMap<>();
+		for (GenderEnum genderEnum : GenderEnum.values()) {
+			map.put(genderEnum.key, genderEnum.value);
+		}
+		return map;
 	}
 
 }

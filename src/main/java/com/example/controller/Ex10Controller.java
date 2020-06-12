@@ -29,12 +29,15 @@ public class Ex10Controller {
 
 	@RequestMapping("/input")
 	public String inputs(Ex10ReceiveForm receiveForm) {
+		
 		User user = new User();
 		user.setName(receiveForm.getName());
 		user.setAge(receiveForm.getIntAge());
 		user.setComment(receiveForm.getComment());
 		user.setBirthDay(receiveForm.getLocalDate());
+		
 		session.setAttribute("user", user);
+		
 		return "ex-10-output";
 	}
 

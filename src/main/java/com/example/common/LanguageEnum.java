@@ -1,5 +1,8 @@
 package com.example.common;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * 好きな言語を表す列挙型.
  * 
@@ -12,14 +15,14 @@ public enum LanguageEnum {
 
 	// 定数に含めるフィールド、コンストラクタ、メソッドを定義
 	/** key値 */
-	private final int key;
+	private final Integer key;
 	/** value値 */
 	private final String value;
 
 	/**
 	 * コンストラクタ。
 	 */
-	private LanguageEnum(final int key, final String value) {
+	private LanguageEnum(final Integer key, final String value) {
 		this.key = key;
 		this.value = value;
 	}
@@ -38,7 +41,7 @@ public enum LanguageEnum {
 	 * 
 	 * @return key値
 	 */
-	public int getKey() {
+	public Integer getKey() {
 		return key;
 	}
 
@@ -49,13 +52,26 @@ public enum LanguageEnum {
 	 *            key
 	 * @return 渡されたkeyを含むenum
 	 */
-	public static LanguageEnum of(int key) {
+	public static LanguageEnum of(Integer key) {
 		for (LanguageEnum languageEnum : LanguageEnum.values()) {
 			if (languageEnum.key == key) {
 				return languageEnum;
 			}
 		}
 		throw new IndexOutOfBoundsException("The value of enum doesn't exist.");
+	}
+	
+	/**
+	 * enumからMap<key,value>を作成し、返します.
+	 * 
+	 * @return Mapオブジェクト
+	 */
+	public static Map<Integer,String> getMap() {
+		Map<Integer,String> map = new LinkedHashMap<>();
+		for (LanguageEnum languageEnum : LanguageEnum.values()) {
+			map.put(languageEnum.key, languageEnum.value);
+		}
+		return map;
 	}
 
 }

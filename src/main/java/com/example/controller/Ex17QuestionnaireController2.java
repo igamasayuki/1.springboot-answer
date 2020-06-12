@@ -1,9 +1,7 @@
 package com.example.controller;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
@@ -14,18 +12,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.common.GenderEnum;
+import com.example.common.HobbyEnum;
+import com.example.common.LanguageEnum;
 import com.example.domain.Questionnaire;
 import com.example.form.Ex17QuestionnaireForm;
 
 /**
- * アンケート関連コントローラ.
+ * アンケート関連コントローラ.<br>
+ * Enumを使用したサンプルです。
  * 
  * @author igamasayuki
  *
  */
 @Controller
-@RequestMapping("/ex17")
-public class Ex17QuestionnaireController {
+@RequestMapping("/ex17-enum")
+public class Ex17QuestionnaireController2 {
 
 	/**
 	 * フォームの初期化.
@@ -39,101 +41,51 @@ public class Ex17QuestionnaireController {
 
 	/**
 	 * アンケート入力画面表示.<br>
-	 * 
-	 * @param model
-	 *            モデル
+	 * Enum を使う場合のサンプル
+	 *
+	 * @param model モデル
 	 * @return アンケート登録
 	 */
-	@RequestMapping(value = "")
+	@RequestMapping("")
 	public String index(Model model) {
-		Map<Integer, String> hobbyMap = new LinkedHashMap<>();
-		hobbyMap.put(1, "野球");
-		hobbyMap.put(2, "サッカー");
-		hobbyMap.put(3, "テニス");
+		// 選択肢を含む各Enum から Mapを作成しリクエストスコープに格納
+		model.addAttribute("genderMap", GenderEnum.getMap());
+		model.addAttribute("hobbyMap", HobbyEnum.getMap());
+		model.addAttribute("languageMap", LanguageEnum.getMap());
 
-		model.addAttribute("hobbyMap", hobbyMap);
-
-		Map<Integer, String> genderMap = new LinkedHashMap<>();
-		genderMap.put(1, "男");
-		genderMap.put(2, "女");
-
-		model.addAttribute("genderMap", genderMap);
-
-		Map<Integer, String> languageMap = new LinkedHashMap<>();
-		languageMap.put(1, "Java");
-		languageMap.put(2, "C");
-		languageMap.put(3, "Python");
-
-		model.addAttribute("languageMap", languageMap);
-
-		return "ex-17-input";
+		return "ex-17-input-enum";
 	}
 
 	/**
 	 * アンケート登録.<br>
 	 * Enum を使う場合のサンプル
 	 *
-	 * @param form
-	 *            フォーム
-	 * @param result
-	 *            リザルト
-	 * @param redirectAttributes
-	 *            フラッシュスコープに対応したmodel
+	 * @param form               フォーム
+	 * @param result             リザルト
+	 * @param redirectAttributes フラッシュスコープに対応したmodel
 	 * @return 入力確認画面(リダイレクト)
 	 */
 	@RequestMapping(value = "/create")
 	public String create(@Validated Ex17QuestionnaireForm form, BindingResult result, RedirectAttributes redirectAttributes,
 			Model model) {
-
 		if (result.hasErrors()) {
 			return index(model);
 		}
-
 		Questionnaire questionnaire = new Questionnaire();
 		BeanUtils.copyProperties(form, questionnaire);
-
-		List<String> hobbyList = new ArrayList<>();
-
-		for (Integer hobbyCode : form.getHobbyList()) {
-			switch (hobbyCode) {
-			case 1:
-				hobbyList.add("野球");
-				break;
-			case 2:
-				hobbyList.add("サッカー");
-				break;
-			case 3:
-				hobbyList.add("テニス");
-				break;
-			}
+		// Enum数値を実際の値へ変換 (例) gender 1 ⇒男
+		questionnaire.setGender(GenderEnum.of(form.getGender()).getValue());
+		List<String> hobbyList = new ArrayList<String>();
+		for (Integer hobbyKey : form.getHobbyList()) {
+			String strHobby = HobbyEnum.of(hobbyKey).getValue();
+			hobbyList.add(strHobby);
 		}
-
-		switch (form.getGender()) {
-		case 1:
-			questionnaire.setGender("男");
-			break;
-		case 2:
-			questionnaire.setGender("女");
-			break;
-		}
-
-		switch (form.getLanguage()) {
-		case 1:
-			questionnaire.setLanguage("Java");
-			break;
-		case 2:
-			questionnaire.setLanguage("C");
-			break;
-		case 3:
-			questionnaire.setLanguage("PHP");
-			break;
-		}
-
 		questionnaire.setHobbyList(hobbyList);
+		questionnaire.setLanguage(LanguageEnum.of(form.getLanguage()).getValue());
 		redirectAttributes.addFlashAttribute("questionnaire", questionnaire);
-		return "redirect:/ex17/toresult";
+		return "redirect:/ex17-enum/toresult";
 	}
-
+	
 	/**
 	 * 入力確認画面表示.
 	 * 
@@ -143,5 +95,4 @@ public class Ex17QuestionnaireController {
 	public String toresult() {
 		return "ex-17-result";
 	}
-
 }

@@ -15,6 +15,7 @@ public class Ex15Controller {
 	public String index(Model model) {
 		// チームリスト
 		List<List<String>> teamList = new ArrayList<>();
+		
 		// タイトルリスト
 		List<String> titleList = new ArrayList<>();
 		titleList.add("チーム名");
@@ -22,6 +23,7 @@ public class Ex15Controller {
 		titleList.add("中堅");
 		titleList.add("大将");
 		teamList.add(titleList);
+		
 		// Aチームメンバーリスト
 		List<String> memberAList = new ArrayList<>();
 		memberAList.add("Aチーム");
@@ -29,6 +31,7 @@ public class Ex15Controller {
 		memberAList.add("佐藤");
 		memberAList.add("齋藤");
 		teamList.add(memberAList);
+		
 		// Bチームメンバーリスト
 		List<String> memberBList = new ArrayList<>();
 		memberBList.add("Bチーム");
@@ -36,6 +39,7 @@ public class Ex15Controller {
 		memberBList.add("伊賀");
 		memberBList.add("大賀");
 		teamList.add(memberBList);
+		
 		// Cチームメンバーリスト
 		List<String> memberCList = new ArrayList<>();
 		memberCList.add("Cチーム");
@@ -43,6 +47,7 @@ public class Ex15Controller {
 		memberCList.add("糸田");
 		memberCList.add("山田");
 		teamList.add(memberCList);
+		
 		// リクエストスコープにセット
 		model.addAttribute("teamList", teamList);
 		return "ex-15";

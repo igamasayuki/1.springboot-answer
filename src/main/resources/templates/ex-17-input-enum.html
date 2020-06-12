@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h3>アンケートフォーム</h3>
-	<form th:action="@{/ex17/create}" th:object="${ex17QuestionnaireForm}"
+	<form th:action="@{/ex17-enum/create}" th:object="${ex17QuestionnaireForm}"
 		method="post">
 		<div th:errors="*{name}" class="error-messages">エラー！</div>
 		名前： <br> <input type="text" name="name" th:field="*{name}"
