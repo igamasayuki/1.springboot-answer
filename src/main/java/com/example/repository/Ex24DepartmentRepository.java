@@ -56,7 +56,7 @@ public class Ex24DepartmentRepository {
 	 * @return 検索された部署情報
 	 */
 	public Department load(Integer id) {
-		String sql = "SELECT id, name " + "FROM " + TABLE_NAME + " WHERE id=:id";
+		String sql = "SELECT id, name " + "FROM " + TABLE_NAME + " WHERE id=:id;";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 
 		return template.queryForObject(sql, param, Department_ROW_MAPPER);
@@ -68,7 +68,7 @@ public class Ex24DepartmentRepository {
 	 * @return 全部署一覧
 	 */
 	public List<Department> findAll() {
-		String sql = "SELECT id, name " + "FROM " + TABLE_NAME + " ORDER BY id; ";
+		String sql = "SELECT id, name " + "FROM " + TABLE_NAME + " ORDER BY id;";
 		return template.query(sql, Department_ROW_MAPPER);
 	}
 
@@ -85,7 +85,7 @@ public class Ex24DepartmentRepository {
 			department.setId(key.intValue());
 			System.out.println(key + "が割り当てられました");
 		} else {
-			String updateSql = "UPDATE " + TABLE_NAME + " " + "SET name = :name " + "WHERE id = :id ;";
+			String updateSql = "UPDATE " + TABLE_NAME + " " + "SET name = :name " + "WHERE id = :id;";
 			template.update(updateSql, param);
 		}
 		return department;
@@ -109,7 +109,7 @@ public class Ex24DepartmentRepository {
 	 * @return 検索された部署名
 	 */
 	public List<Department> findByName(String name) {
-		String sql = "SELECT id,name " + "FROM " + TABLE_NAME + " WHERE name LIKE :name " + "ORDER BY id; ";
+		String sql = "SELECT id,name " + "FROM " + TABLE_NAME + " WHERE name LIKE :name " + "ORDER BY id;";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("name", "%" + name + "%");
 		return template.query(sql, param, Department_ROW_MAPPER);
 	}

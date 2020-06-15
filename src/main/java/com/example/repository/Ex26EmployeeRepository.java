@@ -45,7 +45,7 @@ public class Ex26EmployeeRepository {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT e.id e_id, e.name e_name, e.age e_age, e.gender e_gender, e.department_id e_department_id, d.name d_name ");
 		sql.append("FROM employees e INNER JOIN departments d ON e.department_id = d.id ");
-		sql.append("ORDER BY e.age DESC");
+		sql.append("ORDER BY e.age DESC;");
 		
 		List<Employee> employeeList = template.query(sql.toString(), EMPLOYEE_JOIN_DEPARTMENT_ROW_MAPPER);
 

@@ -63,7 +63,7 @@ public class EmployeeRepository {
 	 * @return 全従業員一覧
 	 */
 	public List<Employee> findAll() {
-		String sql = "SELECT id,name,age,gender,department_id FROM employees ORDER BY age";
+		String sql = "SELECT id,name,age,gender,department_id FROM employees ORDER BY age;";
 
 		List<Employee> employeeList = template.query(sql, EMPLOYEE_ROW_MAPPER);
 
@@ -101,7 +101,7 @@ public class EmployeeRepository {
 	 * @param id ID
 	 */
 	public void deleteById(Integer id) {
-		String deleteSql = "DELETE FROM employees WHERE id=:id";
+		String deleteSql = "DELETE FROM employees WHERE id=:id;";
 
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 
