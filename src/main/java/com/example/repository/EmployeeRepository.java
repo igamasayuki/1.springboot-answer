@@ -2,16 +2,14 @@ package com.example.repository;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.example.domain.Employee;
@@ -31,16 +29,6 @@ public class EmployeeRepository {
 		return employee;
 	};
 	
-	private SimpleJdbcInsert insert;
-	
-	@PostConstruct
-	public void init() {
-		SimpleJdbcInsert simpleJdbcInsert 
-		= new SimpleJdbcInsert((JdbcTemplate)template.getJdbcOperations());
-		SimpleJdbcInsert withTableName
-		= simpleJdbcInsert.withTableName("employees");
-		insert = withTableName.usingGeneratedKeyColumns("id");
-	}
 	/**
 	 * 主キー検索を行う.
 	 * 
@@ -74,20 +62,22 @@ public class EmployeeRepository {
 	 * 渡した従業員情報を保存または更新する.
 	 * 
 	 * @param employee 従業員情報
-	 * @return 追加or更新された後の従業員情報
+	 * @return 追加or更新された後の従業員情報 追加された際は自動採番されたIDがドメインに入ります
 	 */
 	public Employee save(Employee employee) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
 		if(employee.getId() == null) {
-//			String insertSql = "INSERT INTO employees(name,age,gender,development_id) "
-//					+ "VALUES(:name,:age,:gender,:developmentId);";
-//			template.update(insertSql, param);
-			Number key=insert.executeAndReturnKey(param);
-			employee.setId(key.intValue());
-			System.out.println(key+"が割り当てられました");
+			String insertSql = "INSERT INTO employees(name,age,gender,department_id) "
+					+ "VALUES(:name,:age,:gender,:departmentId);";
+			KeyHolder keyHolder = new GeneratedKeyHolder();
+			String[] keyColumnNames = {"id"};
+			template.update(insertSql, param, keyHolder, keyColumnNames);
+			employee.setId(keyHolder.getKey().intValue());
+			System.out.println(keyHolder.getKey()+"が割り当てられました");
+			
 		}else {
 			String updateSql = "UPDATE employees SET name=:name,age=:age "
-					+ "gender=:gender,development_id=developmentId "
+					+ "gender=:gender,department_id=:departmentId "
 					+ "WHERE id=:id;";
 			template.update(updateSql, param);
 		}
