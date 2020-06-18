@@ -14,6 +14,12 @@ import org.springframework.stereotype.Repository;
 
 import com.example.domain.Employee;
 
+/**
+ * employeesテーブルを操作するリポジトリ.
+ * 
+ * @author igamasayuki
+ *
+ */
 @Repository
 public class EmployeeRepository {
 	@Autowired
