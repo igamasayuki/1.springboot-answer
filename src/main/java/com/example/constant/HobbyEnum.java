@@ -10,7 +10,7 @@ import java.util.Map;
  *
  */
 public enum HobbyEnum {
-	// 定数一覧、DayOfWeekのコンストラクタを使用
+	// 定数一覧、HobbyEnumのコンストラクタを使用
 	TENNIS(1, "テニス"), BASE_BALL(2, "野球"), GOLF(3, "ゴルフ"),;
 
 	// 定数に含めるフィールド、コンストラクタ、メソッドを定義

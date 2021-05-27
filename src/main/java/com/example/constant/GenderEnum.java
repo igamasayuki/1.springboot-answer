@@ -10,7 +10,7 @@ import java.util.Map;
  *
  */
 public enum GenderEnum {
-	// 定数一覧、DayOfWeekのコンストラクタを使用
+	// 定数一覧、GenderEnumのコンストラクタを使用
 	MAN(1, "男"), WOMAN(2, "女"),;
 
 	// 定数に含めるフィールド、コンストラクタ、メソッドを定義

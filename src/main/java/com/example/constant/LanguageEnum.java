@@ -10,7 +10,7 @@ import java.util.Map;
  *
  */
 public enum LanguageEnum {
-	// 定数一覧、DayOfWeekのコンストラクタを使用
+	// 定数一覧、LanguageEnumのコンストラクタを使用
 	JAVA(1, "Java"), PHP(2, "PHP"), PYTOHN(3, "Python"), RUBY(4, "Ruby"),;
 
 	// 定数に含めるフィールド、コンストラクタ、メソッドを定義
