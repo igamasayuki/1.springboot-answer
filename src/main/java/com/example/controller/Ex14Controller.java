@@ -15,7 +15,7 @@ public class Ex14Controller {
 	public String index(Model model) {
 
 		List<String> nameList = new ArrayList<>();
-		String[] names = { "山田", "鈴木", "伊藤", "吉田", "佐藤" };
+		String[] names = { "伊賀", "鈴木", "伊藤", "吉田", "佐藤" };
 		for (String name : names) {
 			nameList.add(name);
 		}

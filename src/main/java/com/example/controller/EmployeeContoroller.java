@@ -23,7 +23,7 @@ public class EmployeeContoroller {
 		
 		System.out.println("追加");
 		Employee employee = new Employee();
-		employee.setName("山田太郎");
+		employee.setName("伊賀将之");
 		employee.setAge(20);
 		employee.setGender("男");
 		employee.setDepartmentId(1);
