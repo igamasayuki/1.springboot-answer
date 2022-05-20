@@ -36,20 +36,20 @@ public class Ex26EmployeeRepository {
 	private NamedParameterJdbcTemplate template;
 
 	/**
-	 * 従業員一覧情報を年齢順で取得します.
-	 * この時、部署テーブルも結合させて部署名も一緒に取得します。
+	 * 従業員一覧情報を年齢順で取得します. この時、部署テーブルも結合させて部署名も一緒に取得します。
 	 * 
 	 * @return 部署名を含めた全従業員一覧 従業員が存在しない場合はサイズ0件の従業員一覧を返します
 	 */
 	public List<Employee> findAllWithDepartment() {
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT e.id e_id, e.name e_name, e.age e_age, e.gender e_gender, e.department_id e_department_id, d.name d_name ");
+		sql.append(
+				"SELECT e.id e_id, e.name e_name, e.age e_age, e.gender e_gender, e.department_id e_department_id, d.name d_name ");
 		sql.append("FROM employees e INNER JOIN departments d ON e.department_id = d.id ");
 		sql.append("ORDER BY e.age DESC;");
-		
+
 		List<Employee> employeeList = template.query(sql.toString(), EMPLOYEE_JOIN_DEPARTMENT_ROW_MAPPER);
 
 		return employeeList;
 	}
-	
+
 }

@@ -4,7 +4,8 @@ import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.User;
@@ -17,17 +18,18 @@ public class Ex11Controller {
 	@Autowired
 	private ServletContext application;
 
-	@ModelAttribute
-	public Ex11ReceiveForm setUpForm() {
-		return new Ex11ReceiveForm();
-	}
+	// 別のやり方で行っているためコメントにしています
+//	@ModelAttribute
+//	public Ex11ReceiveForm setUpForm() {
+//		return new Ex11ReceiveForm();
+//	}
 
-	@RequestMapping("")
-	public String index() {
+	@GetMapping("")
+	public String index(Ex11ReceiveForm ex11ReceiveForm) {
 		return "ex-11-input";
 	}
 
-	@RequestMapping("/input")
+	@PostMapping("/input")
 	public String inputs(Ex11ReceiveForm receiveForm) {
 		User user = new User();
 		user.setName(receiveForm.getName());
@@ -38,14 +40,14 @@ public class Ex11Controller {
 		return "ex-11-output";
 	}
 
-	@RequestMapping("/output2")
-	public String output2() {
-		return "ex-11-output2";
-	}
-
-	@RequestMapping("/output")
+	@GetMapping("/output")
 	public String output() {
 		return "ex-11-output";
+	}
+
+	@GetMapping("/output2")
+	public String output2() {
+		return "ex-11-output2";
 	}
 
 }

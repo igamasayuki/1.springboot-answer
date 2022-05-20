@@ -10,7 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -27,25 +28,27 @@ import com.example.form.Ex17QuestionnaireForm;
 @RequestMapping("/ex17")
 public class Ex17QuestionnaireController {
 
-	/**
-	 * フォームの初期化.
-	 * 
-	 * @return フォーム
-	 */
-	@ModelAttribute
-	public Ex17QuestionnaireForm setUpForm() {
-		return new Ex17QuestionnaireForm();
-	}
+	// 別のやり方で実装しているためコメント
+//	/**
+//	 * フォームの初期化.
+//	 * 
+//	 * @return フォーム
+//	 */
+//	@ModelAttribute
+//	public Ex17QuestionnaireForm setUpForm() {
+//		return new Ex17QuestionnaireForm();
+//	}
 
 	/**
 	 * アンケート入力画面表示.<br>
 	 * 
 	 * @param model
 	 *            モデル
+	 * @param form フォーム
 	 * @return アンケート登録
 	 */
-	@RequestMapping(value = "")
-	public String index(Model model) {
+	@GetMapping(value = "")
+	public String index(Model model,Ex17QuestionnaireForm form) {
 		Map<Integer, String> hobbyMap = new LinkedHashMap<>();
 		hobbyMap.put(1, "野球");
 		hobbyMap.put(2, "サッカー");
@@ -81,12 +84,12 @@ public class Ex17QuestionnaireController {
 	 *            フラッシュスコープに対応したmodel
 	 * @return 入力確認画面(リダイレクト)
 	 */
-	@RequestMapping(value = "/create")
+	@PostMapping(value = "/create")
 	public String create(@Validated Ex17QuestionnaireForm form, BindingResult result, RedirectAttributes redirectAttributes,
 			Model model) {
 
 		if (result.hasErrors()) {
-			return index(model);
+			return index(model,form);
 		}
 
 		Questionnaire questionnaire = new Questionnaire();

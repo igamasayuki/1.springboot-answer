@@ -34,7 +34,7 @@ public class EmployeeRepository {
 		employee.setDepartmentId(rs.getInt("department_id"));
 		return employee;
 	};
-	
+
 	/**
 	 * 主キー検索を行う.
 	 * 
@@ -72,22 +72,21 @@ public class EmployeeRepository {
 	 */
 	public Employee save(Employee employee) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
-		if(employee.getId() == null) {
+		if (employee.getId() == null) {
 			String insertSql = "INSERT INTO employees(name,age,gender,department_id) "
 					+ "VALUES(:name,:age,:gender,:departmentId);";
 			KeyHolder keyHolder = new GeneratedKeyHolder();
-			String[] keyColumnNames = {"id"};
+			String[] keyColumnNames = { "id" };
 			template.update(insertSql, param, keyHolder, keyColumnNames);
 			employee.setId(keyHolder.getKey().intValue());
-			System.out.println(keyHolder.getKey()+"が割り当てられました");
-			
-		}else {
+			System.out.println(keyHolder.getKey() + "が割り当てられました");
+
+		} else {
 			String updateSql = "UPDATE employees SET name=:name,age=:age "
-					+ "gender=:gender,department_id=:departmentId "
-					+ "WHERE id=:id;";
+					+ "gender=:gender,department_id=:departmentId " + "WHERE id=:id;";
 			template.update(updateSql, param);
 		}
-		
+
 		return employee;
 	}
 

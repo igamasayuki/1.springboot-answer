@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -14,7 +15,7 @@ public class Ex23Controller {
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 
-	@RequestMapping("/execute")
+	@GetMapping("/execute")
 	public String execute() {
 		String sql = "SELECT count(*) FROM departments "
 				+ "WHERE name = :firstName OR name = :secondName";

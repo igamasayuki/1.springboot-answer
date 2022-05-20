@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-	<span th:insert="fragment-part :: frag_header">
-		ここに別ファイルのヘッダが埋め込まれます。<br>
-	</span>
-	<h3>私の趣味一覧</h3>
-	Swimming
-	<br>
-	<span th:insert="fragment-part :: frag_ad">
-		ここに別ファイルの広告枠が埋め込まれます。<br>
-	</span> Biking
-	<br>
-	<span th:insert="fragment-part :: frag_ad">
-		ここに別ファイルの広告枠が埋め込まれます。<br>
-	</span> Running
-	<br>
-	<span th:insert="fragment-part :: frag_footer">
-		ここに別ファイルのフッタが埋め込まれます。<br>
-	</span>
-
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
+    <span th:insert="fragment-part :: frag_header">
+      ここに別ファイルのヘッダが埋め込まれます。<br />
+    </span>
+    <h3>私の趣味一覧</h3>
+    Swimming
+    <br />
+    <span th:insert="fragment-part :: frag_ad">
+      ここに別ファイルの広告枠が埋め込まれます。<br />
+    </span>
+    Biking
+    <br />
+    <span th:insert="fragment-part :: frag_ad">
+      ここに別ファイルの広告枠が埋め込まれます。<br />
+    </span>
+    Running
+    <br />
+    <span th:insert="fragment-part :: frag_footer">
+      ここに別ファイルのフッタが埋め込まれます。<br />
+    </span>
+  </body>
 </html>

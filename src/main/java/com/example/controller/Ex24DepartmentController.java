@@ -2,6 +2,7 @@ package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Department;
@@ -13,7 +14,7 @@ public class Ex24DepartmentController {
 	@Autowired
 	private Ex24DepartmentService service;
 
-	@RequestMapping("/execute")
+	@GetMapping("/execute")
 	public String execute() {
 		System.out.println("全件検索");
 		service.findAll().forEach(System.out::println);

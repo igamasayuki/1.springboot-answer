@@ -10,23 +10,23 @@ public class Employee {
 	/** ID */
 	private Integer id;
 	/** 従業員名 */
-    private String name;
-    /** 年齢 */
-    private Integer age;
-    /** 性別 */
-    private String gender;
-    /** 部署ID */
-    private Integer departmentId;
-    
-    /** 部署名 (JOINする時に使用される:最後の演習で使用) */
-    private String departmentName;
+	private String name;
+	/** 年齢 */
+	private Integer age;
+	/** 性別 */
+	private String gender;
+	/** 部署ID */
+	private Integer departmentId;
+
+	/** 部署名 (JOINする時に使用される:最後の演習で使用) */
+	private String departmentName;
 
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", departmentId="
 				+ departmentId + ", departmentName=" + departmentName + "]";
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -74,5 +74,5 @@ public class Employee {
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
-    
+
 }

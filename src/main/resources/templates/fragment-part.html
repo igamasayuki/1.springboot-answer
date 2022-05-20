@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
+    埋め込む内容を記載するページです。
 
-	埋め込む内容を記載するページです。
+    <span th:fragment="frag_header">
+      ここは別ファイルに指定したヘッダの内容です。<br />
+    </span>
 
-	<span th:fragment="frag_header"> ここは別ファイルに指定したヘッダの内容です。<br>
-	</span>
+    <span th:fragment="frag_ad">
+      ここは別ファイルに指定した広告枠の内容です。<br />
+    </span>
 
-	<span th:fragment="frag_ad"> ここは別ファイルに指定した広告枠の内容です。<br>
-	</span>
-
-	<span th:fragment="frag_footer"> ここは別ファイルに指定したフッタの内容です。<br>
-	</span>
-
-</body>
+    <span th:fragment="frag_footer">
+      ここは別ファイルに指定したフッタの内容です。<br />
+    </span>
+  </body>
 </html>

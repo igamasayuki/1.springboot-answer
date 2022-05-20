@@ -2,6 +2,7 @@ package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.service.Ex21CalcService;
@@ -13,7 +14,7 @@ public class Ex21CalcController {
 	@Autowired
 	private Ex21CalcService calcService;
 	
-	@RequestMapping("/add")
+	@GetMapping("/add")
 	public String add() {
 		int num1=2;
 		int num2=3;
@@ -21,7 +22,7 @@ public class Ex21CalcController {
 		System.out.println(num1+"+"+num2+"="+resultOfAdd);
 		return "finished";
 	}
-	@RequestMapping("/sub")
+	@GetMapping("/sub")
 	public String sub() {
 		int num1=2;
 		int num2=3;
@@ -30,7 +31,7 @@ public class Ex21CalcController {
 		return "finished";
 	}
 	
-	@RequestMapping("/multi")
+	@GetMapping("/multi")
 	public String multi() {
 		int num1=2;
 		int num2=3;
@@ -39,7 +40,7 @@ public class Ex21CalcController {
 		return "finished";
 	}
 	
-	@RequestMapping("/div")
+	@GetMapping("/div")
 	public String div() {
 		int num1=2;
 		int num2=3;

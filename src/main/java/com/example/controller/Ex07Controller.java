@@ -1,7 +1,8 @@
 package com.example.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.form.Ex07ReceiveForm;
@@ -10,13 +11,14 @@ import com.example.form.Ex07ReceiveForm;
 @RequestMapping("/ex07")
 public class Ex07Controller {
 
-	@ModelAttribute
-	public Ex07ReceiveForm setUpForm() {
-		return new Ex07ReceiveForm();
-	}
+	// 別のやり方で行っているためコメントにしています
+//	@ModelAttribute
+//	public Ex07ReceiveForm setUpForm() {
+//		return new Ex07ReceiveForm();
+//	}
 
-	@RequestMapping("")
-	public String index() {
+	@GetMapping("")
+	public String index(Ex07ReceiveForm ex07ReceiveForm) {
 		return "ex-07";
 	}
 
@@ -28,7 +30,7 @@ public class Ex07Controller {
 //	}
 	
 	// 演習8
-	@RequestMapping("/calc")
+	@PostMapping("/calc")
 	public String calc(Ex07ReceiveForm recieveForm) {
 		System.out.println(recieveForm.getNum1() * recieveForm.getNum2());
 		return "finished";

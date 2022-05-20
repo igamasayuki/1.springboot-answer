@@ -12,22 +12,22 @@ import com.example.repository.EmployeeRepository;
 @Service
 @Transactional
 public class EmployeeService {
-	
+
 	@Autowired
 	private EmployeeRepository repository;
-	
+
 	public Employee load(Integer id) {
 		return repository.load(id);
 	}
-	
-	public List<Employee> findAll(){
+
+	public List<Employee> findAll() {
 		return repository.findAll();
 	}
-	
+
 	public Employee save(Employee employee) {
 		return repository.save(employee);
 	}
-	
+
 	public void deleteById(Integer id) {
 		repository.deleteById(id);
 	}
