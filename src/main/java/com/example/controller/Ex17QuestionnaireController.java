@@ -142,7 +142,7 @@ public class Ex17QuestionnaireController {
 	 * 
 	 * @return 入力確認画面
 	 */
-	@RequestMapping(value = "/toresult")
+	@GetMapping(value = "/toresult")
 	public String toresult() {
 		return "ex-17-result";
 	}

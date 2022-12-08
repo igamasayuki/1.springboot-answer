@@ -23,14 +23,27 @@ public class Ex10Controller {
 //	public Ex10ReceiveForm setUpForm() {
 //		return new Ex10ReceiveForm();
 //	}
-
 	@GetMapping("")
 	public String index(Ex10ReceiveForm ex10ReceiveForm) {
 		return "ex-10-input";
 	}
 
+//	@PostMapping("/input")
+//	public String input(String name, String age, String comment, Date date) {
+//
+//		User user = new User();
+//		user.setName(name);
+//		user.setAge(Integer.parseInt(age));
+//		user.setComment(comment);
+//		user.setBirthDay(date.toLocalDate());
+//
+//		session.setAttribute("user", user);
+//
+//		return "ex-10-output";
+//	}
+	
 	@PostMapping("/input")
-	public String inputs(Ex10ReceiveForm receiveForm) {
+	public String input(Ex10ReceiveForm receiveForm) {
 
 		User user = new User();
 		user.setName(receiveForm.getName());

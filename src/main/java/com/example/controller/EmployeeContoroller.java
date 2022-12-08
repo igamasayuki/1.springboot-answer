@@ -2,6 +2,7 @@ package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Employee;
@@ -14,7 +15,7 @@ public class EmployeeContoroller {
 	@Autowired
 	private EmployeeService service;
 	
-	@RequestMapping("/execute")
+	@GetMapping("/execute")
 	public String execute() {
 		
 		System.out.println("全件検索");
