@@ -1,7 +1,5 @@
 package com.example.controller;
 
-import javax.servlet.ServletContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.User;
 import com.example.form.Ex11ReceiveForm;
+
+import jakarta.servlet.ServletContext;
 
 @Controller
 @RequestMapping("/ex11")
