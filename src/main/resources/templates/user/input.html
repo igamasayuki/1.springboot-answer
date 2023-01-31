@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
+    <form th:action="@{/user/create}" th:object="${userForm}" method="post">
+      <div th:errors="*{name}" style="color: red">エラー！</div>
+      名前：<input type="text" name="name" th:field="*{name}" /><br />
+      <div th:errors="*{email}" style="color: red">エラー！</div>
+      メール:<input type="text" name="email" th:field="*{email}" /><br />
+      <div th:errors="*{password}" style="color: red">エラー！</div>
+      パスワード:<input
+        type="password"
+        name="password"
+        th:field="*{password}"
+      /><br />
+      <div th:errors="*{hobbyList}" style="color: red">エラー！</div>
+      趣味：<br />
+      <div th:each="hobby : ${hobbyMap}">
+        <input
+          type="checkbox"
+          name="hobbyList"
+          th:value="${hobby.key}"
+          th:text="${hobby.value}"
+          th:field="*{hobbyList}"
+        />
+      </div>
+      <button>登録</button>
+    </form>
+  </body>
+</html>
