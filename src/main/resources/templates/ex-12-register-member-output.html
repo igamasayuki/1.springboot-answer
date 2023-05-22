@@ -14,8 +14,8 @@
     </p>
 
     <p>
-      <span th:if="${member.age>=20}" th:text="成人です">dummy</span>
-      <span th:unless="${member.age>=20}" th:text="未成年です">dummy</span>
+      <span th:if="${member.age>=20}">成人です</span>
+      <span th:unless="${member.age>=20}">未成年です</span>
     </p>
   </body>
 </html>

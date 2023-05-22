@@ -21,7 +21,7 @@ public class Ex12Controller {
 
 	@GetMapping("")
 	public String index(Ex12ReceiveForm ex12ReceiveForm) {
-		ex12ReceiveForm.setName("aaa");
+//		ex12ReceiveForm.setName("aaa");
 		return "ex-12-register-member";
 	}
 
