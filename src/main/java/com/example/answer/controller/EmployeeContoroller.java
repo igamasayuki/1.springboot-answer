@@ -17,7 +17,7 @@ public class EmployeeContoroller {
 	
 	@GetMapping("/execute")
 	public String execute() {
-		
+
 		System.out.println("全件検索");
 		service.findAll().forEach(System.out::println);
 		System.out.println();
