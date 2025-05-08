@@ -33,7 +33,7 @@ public class EmployeeContoroller {
 		System.out.println();
 		
 		System.out.println("主キー検索");
-		Employee employee2 = service.load(employee.getId());
+		Employee employee2 = service.findById(employee.getId());
 		System.out.println(employee2);
 		
 		System.out.println("削除");

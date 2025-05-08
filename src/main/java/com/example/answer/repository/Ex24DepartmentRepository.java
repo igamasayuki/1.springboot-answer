@@ -55,7 +55,7 @@ public class Ex24DepartmentRepository {
 	 * @param id ID
 	 * @return 検索された部署情報
 	 */
-	public Department load(Integer id) {
+	public Department findById(Integer id) {
 		String sql = "SELECT id, name " + "FROM " + TABLE_NAME + " WHERE id=:id;";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 
@@ -69,6 +69,25 @@ public class Ex24DepartmentRepository {
 	 */
 	public List<Department> findAll() {
 		String sql = "SELECT id, name " + "FROM " + TABLE_NAME + " ORDER BY id;";
+		if(true){
+			if(true){
+				if(true){
+					if(true){
+						if(true){
+							if(true){
+								if(true){
+									if(true){
+										if(true){
+											System.out.println();
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 		return template.query(sql, Department_ROW_MAPPER);
 	}
 

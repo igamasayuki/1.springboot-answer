@@ -41,7 +41,7 @@ public class EmployeeRepository {
 	 * @param id ID
 	 * @return 検索された従業員情報
 	 */
-	public Employee load(Integer id) {
+	public Employee findById(Integer id) {
 		String sql = "SELECT id,name,age,gender,department_id FROM employees WHERE id=:id";
 
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
@@ -101,5 +101,16 @@ public class EmployeeRepository {
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 
 		template.update(deleteSql, param);
+	}
+
+
+	public List<Employee> test(int[] values){
+		String sql = "SELECT id,name,age,gender,department_id FROM employees WHERE id IN (:values) ORDER BY age;";
+
+		SqlParameterSource param = new MapSqlParameterSource().addValue("values", values);
+
+		List<Employee> employeeList = template.query(sql,param, EMPLOYEE_ROW_MAPPER);
+
+		return employeeList;
 	}
 }

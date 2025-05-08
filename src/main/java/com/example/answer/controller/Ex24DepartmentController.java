@@ -27,7 +27,7 @@ public class Ex24DepartmentController {
 		System.out.println();
 
 		System.out.println("主キー検索");
-		service.load(department.getId());
+		service.findById(department.getId());
 		System.out.println("削除");
 		service.deleteById(department.getId());
 		System.out.println();

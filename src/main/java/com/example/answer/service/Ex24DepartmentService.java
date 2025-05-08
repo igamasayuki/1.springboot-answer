@@ -16,8 +16,8 @@ public class Ex24DepartmentService {
 	@Autowired
 	private Ex24DepartmentRepository repository;
 
-	public Department load(Integer id) {
-		return repository.load(id);
+	public Department findById(Integer id) {
+		return repository.findById(id);
 	}
 
 	public List<Department> findAll() {

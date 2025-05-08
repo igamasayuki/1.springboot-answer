@@ -16,8 +16,8 @@ public class EmployeeService {
 	@Autowired
 	private EmployeeRepository repository;
 
-	public Employee load(Integer id) {
-		return repository.load(id);
+	public Employee findById(Integer id) {
+		return repository.findById(id);
 	}
 
 	public List<Employee> findAll() {
